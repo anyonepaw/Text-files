@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.Test;
 
@@ -19,26 +20,27 @@ public class SolutionTest {
         FolderEntry folderEntry = new FolderEntry();
         folderEntry.pullFilesFromFolder(path);
         ArrayList<File> txtFiles = folderEntry.getTxtFilesList();
-        for (File file: txtFiles) {
+        for (File file : txtFiles) {
             System.out.println(file.getName());
         }
 
         assertTrue(!txtFiles.isEmpty());
     }
 
+
     @Test
-    public void fileIsNotEmpty() throws IOException {
+    public void fileExists() throws IOException {
 
-        FolderEntry folderEntry = new FolderEntry();
-        folderEntry.pullFilesFromFolder(path);
-        ArrayList<File> txtFiles = folderEntry.getTxtFilesList();
-        TXTFileWriter txtFileWriter = new TXTFileWriter();
-        txtFileWriter.writeTXTFiles(pathName, txtFiles);
 
+        ArrayList<File> txtFiles = new ArrayList<>();
+        txtFiles.add(new File("/Users/Angelika/Desktop/Java/new.txt"));
+        TXTFileWriter txtFileWriter = new TXTFileWriter(pathName);
+        System.out.println(txtFileWriter.getFile().getAbsolutePath());
+        txtFileWriter.writeTXTFiles(txtFiles);
+
+        assertTrue(txtFileWriter.getFile().exists());
         assertTrue(txtFileWriter.getFile().length() > 0);
     }
-
-
 
 
 }
