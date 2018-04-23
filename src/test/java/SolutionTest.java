@@ -1,10 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class SolutionTest {
